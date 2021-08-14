@@ -36,10 +36,10 @@ function Home() {
       <div className="flex flex-col items-center text-center">
         <div className="text-5xl mt-48">{guest.name}</div>
         <div className="text-2xl max-w-xs">
-          Приглашаем васна свадьбу 17 сентября
+          Приглашаем вас на свадьбу 17 сентября
         </div>
         <div className="text-lg mt-8">Интересно к кому?</div>
-        <img src={we} />
+        <img src={we} className="w-60"/>
         <div className="text-lg flex gap-4 max-w-xs">
           <div>Диме Кузнецову</div>
           <div>Даше Елисеевой</div>
@@ -72,11 +72,11 @@ function Home() {
       <div className="flex flex-col items-center">
         <div className="text-5xl mt-24">История отношений</div>
         {history.map((d, i) => (
-          <div className={`flex gap-8 ${i % 2 ? "flex-row-reverse" : ""}`}>
-            <img src={d.image} />
-            <div>
+          <div className={`flex gap-8 mt-8 ${i % 2 ? "flex-row-reverse" : ""}`}>
+            <img src={d.image} className="w-2/5"/>
+            <div className="flex flex-col justify-center">
               <div>{d.title}</div>
-              <div>{d.text}</div>
+              <div className="mt-4">{d.text}</div>
             </div>
           </div>
         ))}
