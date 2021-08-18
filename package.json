@@ -1,7 +1,6 @@
 {
   "name": "wedding",
   "version": "0.1.0",
-  "homepage": "https://saywhaat.github.io/wedding/",
   "dependencies": {
     "@craco/craco": "^6.2.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -15,7 +14,6 @@
     "@types/react-router-dom": "^5.1.8",
     "autoprefixer": "^9",
     "crypto-js": "^4.1.1",
-    "gh-pages": "^3.2.3",
     "postcss": "^7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -29,9 +27,7 @@
   "scripts": {
     "start": "craco start",
     "encrypt": "cd src && node encrypt.js",
-    "build": "PUBLIC_URL='/' craco build",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build",
+    "build": "craco build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -45,6 +41,7 @@
   "browserslist": {
     "production": [
       ">0.2%",
+      "ie 11",
       "not dead",
       "not op_mini all"
     ],

@@ -1,6 +1,6 @@
 import React from "react";
 import {
-  HashRouter as Router,
+  BrowserRouter as Router,
   Switch,
   Route,
   useParams
@@ -43,7 +43,12 @@ function Home() {
           (пятница)
         </div>
         <div className="text-lg mt-8">Интересно к кому?</div>
-        <img src={we} className="w-60" style={{ mixBlendMode: "multiply" }} />
+        <img
+          alt=""
+          src={we}
+          className="w-60"
+          style={{ mixBlendMode: "multiply" }}
+        />
         <div className="text-lg flex gap-4 max-w-xs mt-8">
           <div>Диме Кузнецову</div>
           <div>Даше Елисеевой</div>
@@ -58,7 +63,7 @@ function Home() {
               i % 2 ? "lg:flex-row-reverse" : ""
             }`}
           >
-            <img src={d.image} className="lg:w-2/5" />
+            <img alt="" src={d.image} className="lg:w-2/5" />
             <div className="flex flex-col justify-center">
               <div>{d.title}</div>
               <div className="mt-4">{d.text}</div>
