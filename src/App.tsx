@@ -100,7 +100,7 @@ function Home() {
 
       <a href="https://github.com/saywhaat/wedding">
         <svg
-          className="fixed top-4 right-4 w-10 h-10 rounded-full"
+          className="absolute top-4 right-4 w-10 h-10 rounded-full"
           xmlns="http://www.w3.org/2000/svg"
           aria-label="GitHub"
           role="img"
