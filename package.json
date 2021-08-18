@@ -29,7 +29,7 @@
   "scripts": {
     "start": "craco start",
     "encrypt": "cd src && node encrypt.js",
-    "build": "PUBLIC_URL='' craco build",
+    "build": "PUBLIC_URL='/' craco build",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build",
     "test": "react-scripts test",
