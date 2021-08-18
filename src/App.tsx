@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { guests } from "./data_encrypted.json";
 import we from "./we.png";
-import weddingSrc from "./wedding.png";
 import "wired-elements";
 import history from "./history";
 import { SHA256, AES, enc } from "crypto-js";
@@ -23,7 +22,7 @@ declare global {
 const DEFAULT_GUEST = {
   name: "Привет друг! Если ты получал персональную ссылку, то",
   text:
-    "Ну, а если ты не получал именную персональную ссылку, то просто закрой сайт!",
+    "Ну, а если ты не получал именную персональную ссылку, то просто закрой сайт",
   single: true
 };
 
