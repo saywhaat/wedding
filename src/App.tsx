@@ -53,6 +53,12 @@ function Home() {
           <div>Диме Кузнецову</div>
           <div>Даше Елисеевой</div>
         </div>
+        <div className="text-lg mt-16 max-w-s">
+          <div>Отмечать будем в Forest Symphony</div>
+        </div>
+        <div className="text-lg mt-4 max-w-s">
+          <div>ЛО 30 км Новоприозерского шоссе</div>
+        </div>
         {guest.text ? (
           <div className="text-lg mt-16 max-w-s">{guest.text}</div>
         ) : null}
