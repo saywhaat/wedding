@@ -100,7 +100,7 @@ function Home() {
         <div className="fixed bottom-0 left-0 text-6xl">💰</div>
       ) : null}
 
-      {guest.isIT ? (
+      {guest.IT ? (
         <a href="https://github.com/saywhaat/wedding">
           <svg
             className="absolute top-4 right-4 w-10 h-10 rounded-full"
