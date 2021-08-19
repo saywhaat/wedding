@@ -39,7 +39,7 @@ function Home() {
       <div className="flex flex-col items-center text-center">
         <div className="text-5xl">{guest.name}</div>
         <div className="text-2xl max-w-xs mt-16">
-          Приглашаем {guest.single ? "тебя" : "вас"} на свадьбу 17 сентября
+          Приглашаем {guest.single ? "тебя" : "вас"} на нашу свадьбу 17 сентября
           (пятница)
         </div>
         <div className="text-lg mt-8">Интересно к кому?</div>
