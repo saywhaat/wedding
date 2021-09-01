@@ -3,33 +3,48 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  useParams,
+  useParams
 } from "react-router-dom";
 import { guests } from "./data_encrypted.json";
 import we from "./we.png";
 import "wired-elements";
 import history from "./history";
 import { SHA256, AES, enc } from "crypto-js";
+import "wired-elements";
+import dc1 from "./dc1.jpg";
+import dc2 from "./dc2.jpg";
 
 declare global {
   namespace JSX {
     interface IntrinsicElements {
-      "wired-button": any;
+      "wired-image": any;
+      "wired-card": any;
     }
   }
 }
 
+const DC_OK = [dc1, dc2, dc2, dc2, dc1, dc1, dc1, dc1];
+
+const SCHEDULE = [
+  { time: "12.00", text: "Сбор у автобуса" },
+  { time: "12.00", text: "Сбор у автобуса" },
+  { time: "12.00", text: "Сбор у автобуса" },
+  { time: "12.00", text: "Сбор у автобуса" },
+  { time: "12.00", text: "Сбор у автобуса" }
+];
+
 const DEFAULT_GUEST = {
   name: "Привет друг! Если ты получал персональную ссылку, то",
-  text: "Ну, а если ты не получал именную персональную ссылку, то просто закрой сайт",
+  text:
+    "Ну, а если ты не получал именную персональную ссылку, то просто закрой сайт",
   single: true,
-  isIT: true,
+  isIT: true
 };
 
 function Home() {
   const [showHint, setShowHint] = React.useState(false);
   let { secret } = useParams<{ secret: string }>();
-  const encryptedGuest = guests.find((d) => d.id === SHA256(secret).toString());
+  const encryptedGuest = guests.find(d => d.id === SHA256(secret).toString());
   const guest = encryptedGuest
     ? JSON.parse(AES.decrypt(encryptedGuest.data, secret).toString(enc.Utf8))
     : DEFAULT_GUEST;
@@ -82,29 +97,35 @@ function Home() {
       </div>
 
       <div className="flex flex-col mt-24">
-        <div className="text-5xl">
-          Где собираемся? Куда едем? Как одеваться? Что дарить
-          <span
-            style={{
-              color: "#5DB4EC",
-              cursor: "pointer",
-              textDecoration: "underline",
-            }}
-            onMouseEnter={() => setShowHint(true)}
-            onMouseLeave={() => setShowHint(false)}
-          >
-            ?
-          </span>
-        </div>
+        <div className="text-5xl">Дресс-код</div>
         <div className="text-lg mt-8">
-          Вся информация очень скоро появится на этом сайте. Следите за
-          обновлениями!
+          Текст, который составит Даша о том как можно одеваться, а за ним
+          картинки примеров как можно одеваться мужчин и дам и не дам
+        </div>
+        <div className="mt-8 flex flex-wrap justify-center gap-6">
+          {DC_OK.map(src => (
+            <wired-image
+              style={{ height: 300 }}
+              elevation="2"
+              src={src}
+            ></wired-image>
+          ))}
         </div>
       </div>
 
-      {showHint ? (
-        <div className="fixed bottom-0 left-0 text-6xl">💰</div>
-      ) : null}
+      <div className="flex flex-col mt-24">
+        <wired-card elevation="2">
+          <div className="p-8">
+            <div className="text-5xl">Расписание мероприятий</div>
+            {SCHEDULE.map(d => (
+              <div className="mt-6">
+                <div style={{ color: "#22A116" }}>{d.time}</div>
+                <div>{d.text}</div>
+              </div>
+            ))}
+          </div>
+        </wired-card>
+      </div>
 
       {guest.IT ? (
         <a href="https://github.com/saywhaat/wedding">
