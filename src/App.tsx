@@ -42,7 +42,7 @@ const DEFAULT_GUEST = {
 };
 
 function Home() {
-  const [showHint, setShowHint] = React.useState(false);
+  // const [showHint, setShowHint] = React.useState(false);
   let { secret } = useParams<{ secret: string }>();
   const encryptedGuest = guests.find(d => d.id === SHA256(secret).toString());
   const guest = encryptedGuest
