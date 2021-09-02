@@ -13,6 +13,10 @@ import { SHA256, AES, enc } from "crypto-js";
 import "wired-elements";
 import dc1 from "./dc1.jpg";
 import dc2 from "./dc2.jpg";
+import dc3 from "./dc3.jpg";
+import dc4 from "./dc4.jpg";
+import dc5 from "./dc5.jpg";
+import dc6 from "./dc6.jpg";
 
 declare global {
   namespace JSX {
@@ -23,14 +27,15 @@ declare global {
   }
 }
 
-const DC_OK = [dc1, dc2, dc2, dc2, dc1, dc1, dc1, dc1];
+const DC_OK = [dc1, dc2, dc3, dc4, dc5, dc6];
 
 const SCHEDULE = [
-  { time: "12.00", text: "Сбор у автобуса" },
-  { time: "12.00", text: "Сбор у автобуса" },
-  { time: "12.00", text: "Сбор у автобуса" },
-  { time: "12.00", text: "Сбор у автобуса" },
-  { time: "12.00", text: "Сбор у автобуса" }
+  { time: "13-30", text: "Сбор у автобуса на юге города" },
+  { time: "14-00", text: "Сбор у автобуса на северо-востоке города" },
+  { time: "15-00", text: "Вэлком и коктейли" },
+  { time: "16-00", text: "Церемония" },
+  { time: "17-00", text: "Уютный ужин и вечеринка" },
+  { time: "23-00", text: "Окончание вечера" }
 ];
 
 const DEFAULT_GUEST = {
