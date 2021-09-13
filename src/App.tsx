@@ -6,7 +6,7 @@ import {
   useParams
 } from "react-router-dom";
 import { guests } from "./data_encrypted.json";
-import we from "./we.png";
+// import we from "./we.png";
 import "wired-elements";
 import history from "./history";
 import { SHA256, AES, enc } from "crypto-js";
@@ -23,6 +23,8 @@ declare global {
     interface IntrinsicElements {
       "wired-image": any;
       "wired-card": any;
+      "wired-tabs": any;
+      "wired-tab": any;
     }
   }
 }
@@ -30,7 +32,7 @@ declare global {
 const DC_OK = [dc1, dc2, dc3, dc4, dc5, dc6];
 
 const SCHEDULE = [
-  { time: "13-30", text: "Сбор у автобуса на юге города" },
+  { time: "13-20", text: "Сбор у автобуса на юге города" },
   { time: "14-00", text: "Сбор у автобуса на северо-востоке города" },
   { time: "15-00", text: "Вэлком и коктейли" },
   { time: "16-00", text: "Церемония" },
@@ -62,78 +64,72 @@ function Home() {
           Приглашаем {guest.single ? "тебя" : "вас"} на нашу свадьбу 17 сентября
           (пятница)
         </div>
-        <div className="text-lg mt-8">Интересно к кому?</div>
-        <img
-          alt=""
-          src={we}
-          className="w-60"
-          style={{ mixBlendMode: "multiply" }}
-        />
-        <div className="text-lg flex gap-4 max-w-xs mt-8">
-          <div>Диме Кузнецову</div>
-          <div>Даше Елисеевой</div>
-        </div>
-        <div className="text-lg mt-16 max-w-s">
-          <div>Отмечать будем в Forest Symphony</div>
-        </div>
-        <div className="text-lg mt-4 max-w-s">
-          <div>ЛО 30 км Новоприозерского шоссе</div>
-        </div>
-        {guest.text ? (
-          <div className="text-lg mt-16 max-w-s">{guest.text}</div>
-        ) : null}
-      </div>
-
-      <div className="flex flex-col items-center mt-24">
-        <div className="text-5xl">История отношений</div>
-        {history.map((d, i) => (
-          <div
-            className={`flex flex-col lg:flex-row gap-8 mt-8 ${
-              i % 2 ? "lg:flex-row-reverse" : ""
-            }`}
-          >
-            <img alt="" src={d.image} className="lg:w-2/5" />
-            <div className="flex flex-col justify-center">
-              <div>{d.title}</div>
-              <div className="mt-4">{d.text}</div>
-            </div>
-          </div>
-        ))}
-      </div>
-
-      <div className="flex flex-col mt-24">
-        <div className="text-5xl">Дресс-код</div>
-        <div className="text-lg mt-8">
-          Будем рады, если вы поддержите стиль и цвет нашей свадьбы в своих
-          нарядах. Для мужчин светлые костюмы или брюки бежевые/ коричневые/
-          серые. Светлые однотонные рубашки. Для девушек платья/костюмы в
-          пастельных оттенках. Выбирайте удобную обувь, так как это лесная
-          площадка, и на деревянных террасах большие зазоры между досками -
-          тонкие каблуки в них застревают.
-        </div>
-        <div className="mt-8 flex flex-wrap justify-center gap-6">
-          {DC_OK.map(src => (
-            <wired-image
-              style={{ height: 300 }}
-              elevation="2"
-              src={src}
-            ></wired-image>
-          ))}
-        </div>
-      </div>
-
-      <div className="flex flex-col mt-24">
-        <wired-card elevation="2">
-          <div className="p-8">
-            <div className="text-5xl">Расписание мероприятий</div>
-            {SCHEDULE.map(d => (
-              <div className="mt-6">
-                <div style={{ color: "#22A116" }}>{d.time}</div>
-                <div>{d.text}</div>
+        <div className="mt-16">
+          <wired-tabs>
+            <wired-tab name="История">
+              <div className="flex flex-col items-center mt-16">
+                {history.map((d, i) => (
+                  <div
+                    className={`flex flex-col lg:flex-row gap-8 mt-8 ${
+                      i % 2 ? "lg:flex-row-reverse" : ""
+                    }`}
+                  >
+                    <img alt="" src={d.image} className="lg:w-2/5" />
+                    <div className="flex flex-col justify-center">
+                      <div>{d.title}</div>
+                      <div className="mt-4">{d.text}</div>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </wired-card>
+            </wired-tab>
+            <wired-tab name="Дресс-код">
+              <div className="text-5xl mt-16">Дресс-код</div>
+              <div className="text-lg mt-8 p-8">
+                Будем рады, если вы поддержите стиль и цвет нашей свадьбы в
+                своих нарядах. Для мужчин светлые костюмы или брюки бежевые/
+                коричневые/ серые. Светлые однотонные рубашки. Для девушек
+                платья/костюмы в пастельных оттенках. Выбирайте удобную обувь,
+                так как это лесная площадка, и на деревянных террасах большие
+                зазоры между досками - тонкие каблуки в них застревают.
+              </div>
+              <div className="mt-8 flex flex-wrap justify-center gap-6">
+                {DC_OK.map(src => (
+                  <wired-image
+                    style={{ height: 300 }}
+                    elevation="2"
+                    src={src}
+                  ></wired-image>
+                ))}
+              </div>
+            </wired-tab>
+            <wired-tab name="Расписание">
+              <div className="text-5xl mt-16">Расписание мероприятий</div>
+              {SCHEDULE.map(d => (
+                <div className="mt-6">
+                  <div style={{ color: "#22A116" }}>{d.time}</div>
+                  <div>{d.text}</div>
+                </div>
+              ))}
+            </wired-tab>
+            <wired-tab name="Трансфер">
+              <div className="text-5xl mt-16">Трансфер</div>
+              <div className="px-16">
+                <div className="text-2xl mt-16">
+                  Автобус будет собирать гостей в следующих локациях:
+                </div>
+                <div className="mt-6">
+                  <div style={{ color: "#22A116" }}>13:20</div>
+                  <div>Московский пр.212 демонстрационный проезд</div>
+                </div>
+                <div className="mt-6">
+                  <div style={{ color: "#22A116" }}>14:00</div>
+                  <div>Заневский пр.13</div>
+                </div>
+              </div>
+            </wired-tab>
+          </wired-tabs>
+        </div>
       </div>
 
       {guest.IT ? (
