@@ -126,6 +126,10 @@ function Home() {
                   <div style={{ color: "#22A116" }}>14:00</div>
                   <div>Заневский пр.13</div>
                 </div>
+                <div className="text-xl mt-16">
+                  С праздника автобус повезет гостей тем же маршрутом. Прибытие
+                  в СПБ ориентировочно в полночь
+                </div>
               </div>
             </wired-tab>
           </wired-tabs>
